@@ -8,6 +8,16 @@ public class User extends AbstractEntity{
     private String lastName;
     private String email;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String password;
+
     public String getFirstName() {
         return firstName;
     }

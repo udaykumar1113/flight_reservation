@@ -5,11 +5,11 @@
     <title>User Login</title>
 </head>
 <body>
-    <form action="login" method="post">
-        User Name: <input type="text" name="userName"/>
+    <form th:action="login">
+        User Name: <input type="text" name="email"/>
         Password: <input type="password" name="password"/>
-        <input type="submit" value="login">
-
+        <input type="submit" value="login"/>
     </form>
+    <span th:text="${msg != null} ? ${msg} :${null}"/>
 </body>
 </html>
