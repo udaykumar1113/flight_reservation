@@ -2,6 +2,7 @@ package com.uday.flightreservation.entities;
 
 import javax.persistence.Entity;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 public class Flight extends AbstractEntity {
@@ -11,6 +12,16 @@ public class Flight extends AbstractEntity {
     private String departureCity;
     private String arrivalCity;
     private Timestamp estimatedDepartureTime;
+
+    public Date getDateOfDeparture() {
+        return dateOfDeparture;
+    }
+
+    public void setDateOfDeparture(Date dateOfDeparture) {
+        this.dateOfDeparture = dateOfDeparture;
+    }
+
+    private Date dateOfDeparture;
 
     public String getFlightNumber() {
         return flightNumber;

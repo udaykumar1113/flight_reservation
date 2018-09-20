@@ -36,7 +36,7 @@ public class UserController {
         if(userRepository.findByEmail(email).getEmail().equals(email)) {
             System.out.print(userRepository.findByEmail(email)+" "+email);
             modelMap.addAttribute("msg","successful login");
-            return "login/login";
+            return "findFlights";
         }
             else{
             System.out.print(userRepository.findByEmail(email)+" "+email);
