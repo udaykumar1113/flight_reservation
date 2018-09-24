@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 public class Passenger extends AbstractEntity {
     private String firstName;
     private String lastName;
-    private String middlename;
+    private String middleName;
     private String email;
     private String phone;
 
@@ -27,11 +27,11 @@ public class Passenger extends AbstractEntity {
     }
 
     public String getMiddlename() {
-        return middlename;
+        return middleName;
     }
 
     public void setMiddlename(String middlename) {
-        this.middlename = middlename;
+        this.middleName = middlename;
     }
 
     public String getEmail() {
@@ -55,7 +55,7 @@ public class Passenger extends AbstractEntity {
         return "Passenger{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", middlename='" + middlename + '\'' +
+                ", middleName='" + middleName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';

@@ -6,10 +6,10 @@
 </head>
 <body>
 <h2>Complete Reservation</h2>
-<!--Flight Id: <span th:text="${flight.id}" th:value="${flight.id}">id</span><br>-->
-Arrival City: <span  th:text="${flight.arrivalCity}">city</span><br>
-Airline: <span th:text="${flight.operatingAirlines}"/><br>
-Departure City: <span th:text="${flight.departureCity}"/><br>
+Flight Id: <span th:text="${flight.id}" th:value="${flight.id}"></span><br>
+Arrival City: <span  th:text="${flight.arrivalCity}"></span><br>
+Airline: <span th:text="${flight.operatingAirlines}"></span><br>
+Departure City: <span th:text="${flight.departureCity}"></span><br>
 <form th:action="@{/completeReservation}" method="post">
 <pre>
 <h2>Passenger Details:</h2>
@@ -24,7 +24,7 @@ Card No:<input type="text" name="cardNumber"/>
 Expiry Date:<input type="text" name="expirationDate"/>
 Three Digit Sec Code:<input type="text" name="securityCode"/>
 
-<input type="hidden" name="flightId" value="${flight.id}"/>
+<input type="hidden" name="flightId" th:value="${flight.id}"/>
 <input type="submit" value="confirm"/>
 </pre>
 </form>

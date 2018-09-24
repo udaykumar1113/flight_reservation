@@ -5,6 +5,23 @@
     <title>Display Flights</title>
 </head>
 <body>
-
+<h2>List of Flights</h2>
+<table>
+    <tr>
+        <th>Operating Airlines</th>
+        <th>Departure City</th>
+        <th>Arrival City</th>
+        <th>Departure Date</th>
+        <th></th>
+    </tr>
+    <tr th:each="flights: ${flightList}">
+        <td th:text="${flights.operatingAirlines}"/>
+        <td th:text="${flights.departureCity}"/>
+        <td th:text="${flights.arrivalCity}"/>
+        <td th:text="${flights.dateOfDeparture}"/>
+        <td th:text="${flights.estimatedDepartureTime}"/>
+        <td><a th:href="@{'showCompleteReservation/'+${flights.id}}">Book Flight</a></td>
+    </tr>
+</table>
 </body>
 </html>
