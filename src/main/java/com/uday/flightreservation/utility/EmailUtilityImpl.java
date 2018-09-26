@@ -24,6 +24,7 @@ public class EmailUtilityImpl implements EmailUtility {
             helper.setSubject(subject);
             helper.setText(body);
             System.out.println("Inside sending mail to "+toAddress);
+            sender.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
