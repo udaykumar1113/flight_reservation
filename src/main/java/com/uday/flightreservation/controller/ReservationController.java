@@ -5,6 +5,7 @@ import com.uday.flightreservation.entities.Flight;
 import com.uday.flightreservation.entities.Reservation;
 import com.uday.flightreservation.repositories.FlightRepository;
 import com.uday.flightreservation.service.ReservationService;
+import com.uday.flightreservation.utility.EmailUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,9 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
+    @Autowired
+    private EmailUtility emailUtility;
+
     @RequestMapping(value="showCompleteReservation/{id}", method = RequestMethod.GET)
     public String showCompleteReservation(@PathVariable("id") Long id, ModelMap modelMap){
         System.out.println("Reservation is for id: "+id);
@@ -36,6 +40,8 @@ public class ReservationController {
                                       ModelMap modelMap){
         System.out.println(reservationRequest);
         Reservation savedReservation=reservationService.bookFlight(reservationRequest);
+
+        emailUtility.sendMail("testmailer1113@gmail.com","Saved reservation notification","Reservation saved successfully"+savedReservation.toString());
 
         modelMap.addAttribute("msg","Reservation saved successfully");
         return "reservationConfirmation";
