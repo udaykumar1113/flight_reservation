@@ -1,9 +1,12 @@
 package com.uday.flightreservation.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Reservation extends AbstractEntity {
 
     private Boolean checkedIn;

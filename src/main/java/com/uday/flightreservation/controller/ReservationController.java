@@ -41,7 +41,7 @@ public class ReservationController {
         System.out.println(reservationRequest);
         Reservation savedReservation=reservationService.bookFlight(reservationRequest);
 
-        emailUtility.sendMail("testmailer1113@gmail.com","Saved reservation notification","Reservation saved successfully"+savedReservation.toString());
+        emailUtility.sendMail("udaykumar1113@gmail.com","Saved reservation notification","Reservation saved successfully"+savedReservation.toString());
 
         modelMap.addAttribute("msg","Reservation saved successfully");
         return "reservationConfirmation";
