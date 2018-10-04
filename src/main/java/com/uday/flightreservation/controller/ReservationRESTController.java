@@ -17,7 +17,7 @@ public class ReservationRESTController {
         return reservationRepository.getOne(id);
     }
 
-    @RequestMapping(value="/updateReservation", method=RequestMethod.PUT)
+    @RequestMapping(value="/updateReservation", method=RequestMethod.POST)
     public Reservation updateReservation(@RequestBody ReservationUpdateRequest reservationUpdateRequest){
 
         Reservation reservation=reservationRepository.getOne(reservationUpdateRequest.getId());
