@@ -50,7 +50,11 @@ public class ReservationController {
 
         emailUtility.sendMail("udaykumar1113@gmail.com","Saved reservation notification","Reservation saved successfully"+savedReservation.toString());
 
-        modelMap.addAttribute("msg","Reservation saved successfully");
+        emailUtility.sendAttachmentMail("testmailer1113@gmail.com",
+                "Fight Itinerary confirmation",
+                "This the flight Itinerary confirmation",
+                System.getProperty("user.home")+"/Downloads/flight_itenary_"+savedReservation.getId()+".pdf");
+        modelMap.addAttribute("msg","Reservation saved successfully and an Itinerary is mailed");
         return "reservationConfirmation";
     }
 }

@@ -25,11 +25,8 @@ public class PdfGenerator {
         try {
             //pdf writer is given an document to write and store on the location
             PdfWriter.getInstance(document,new FileOutputStream(filePath));
-
             document.open();
-
             document.add(generatePdfTable(reservation,filePath));
-
             document.close();
 
         } catch (DocumentException e) {

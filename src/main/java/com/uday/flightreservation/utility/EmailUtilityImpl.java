@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 
 @Component
 public class EmailUtilityImpl implements EmailUtility {
@@ -24,6 +25,24 @@ public class EmailUtilityImpl implements EmailUtility {
             helper.setSubject(subject);
             helper.setText(body);
             System.out.println("Inside sending mail to "+toAddress);
+            sender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void sendAttachmentMail(String toAddress, String subject, String body, String attachmentPath) {
+
+        MimeMessage message = sender.createMimeMessage();
+
+
+        try {
+            MimeMessageHelper helper=new MimeMessageHelper(message,true);
+            helper.addAttachment("Flight_Itinerary",new File(attachmentPath));
+            helper.setTo(toAddress);
+            helper.setSubject(subject);
+            helper.setText(body);
             sender.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();
