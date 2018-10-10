@@ -5,6 +5,9 @@ import com.uday.flightreservation.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +21,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     private static final Logger LOGGER= LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping("/showReg")
@@ -27,6 +33,7 @@ public class UserController {
 
     @RequestMapping(value="/registerUser", method= RequestMethod.POST)
     public String register(@ModelAttribute("user") User user){
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "login/login";
     }
