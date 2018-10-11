@@ -2,6 +2,7 @@ package com.uday.flightreservation.controller;
 
 import com.uday.flightreservation.entities.User;
 import com.uday.flightreservation.repositories.UserRepository;
+import com.uday.flightreservation.service.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class UserController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private SecurityService securityService;
+
     private static final Logger LOGGER= LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping("/showReg")
@@ -44,7 +48,10 @@ public class UserController {
                         ModelMap modelMap){
         LOGGER.info("Inside login with "+email+" "+password);
         //System.out.print("Inside login with "+email+" "+password);
-        if(userRepository.findByEmail(email).getEmail().equals(email)) {
+
+        boolean loginResponse=securityService.login(email,password);
+
+        if(loginResponse) {
             //System.out.print(userRepository.findByEmail(email)+" "+email);
             LOGGER.info("User able to login successful");
             LOGGER.error("error test");
