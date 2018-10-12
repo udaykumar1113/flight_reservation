@@ -2,9 +2,11 @@ package com.uday.flightreservation.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import java.util.Set;
 
+@Entity
 public class Role extends AbstractEntity implements GrantedAuthority {
 
     private String name;
