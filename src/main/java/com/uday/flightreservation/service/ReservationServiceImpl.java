@@ -9,6 +9,8 @@ import com.uday.flightreservation.repositories.PassengerRepository;
 import com.uday.flightreservation.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class ReservationServiceImpl implements ReservationService{
@@ -23,6 +25,7 @@ public class ReservationServiceImpl implements ReservationService{
     private ReservationRepository reservationRepository;
 
     @Override
+    @Transactional
     public Reservation bookFlight(ReservationRequest request) {
         Flight flight=flightRepository.getOne(request.getFlightId());
 
