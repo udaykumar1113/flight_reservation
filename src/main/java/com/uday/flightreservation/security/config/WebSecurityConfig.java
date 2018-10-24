@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/login/*","/login","/showReg","/registerUser")
+                .antMatchers("/login/*","/login","/showReg","/registerUser","/getReservation/*","/updateReservation/*")
                 .permitAll()
                 .antMatchers("/admin/showAddFlight")
                     .hasAnyAuthority("ADMIN").anyRequest().authenticated()
